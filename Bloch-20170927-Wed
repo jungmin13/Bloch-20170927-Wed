@@ -1,0 +1,59 @@
+from matplotlib import pyplot as plt
+import math
+from pylab import *
+
+amp=10
+t1=0.1
+t2=30
+c=1
+d=-1
+e=0
+
+def f(x) :
+	return math cos(x)+10*math.sin(x)/x
+
+def draw_graph(x,y) : 
+	plt.plot(x,y)
+	plt.xlabel('x-coordinate')
+	plt.ylabel('y-coordinate')
+	plt.title('Bloch Theorem')
+
+def timerange(start, final, interval):
+	numbers=[]
+	while start < final :
+		numbers.append(start)
+		start += interval
+	return numbers
+
+def draw_xy(a,j,k):
+	intervals=timerange(t1,t2,0.01)
+	x=[]
+	y=[]
+	y1=[]
+	y2=[]
+	for t in intervals:
+		x.append(t)
+		y.append(math.cos(t)+a+math.sin(t)/t)
+		y1.append(j)
+		y2.append(k)
+	draw_graph(x,y)
+	draw_graph(x,y1)
+	draw_graph(x,y2)
+	plt.show()
+
+if __name__ == 	"__main__":
+	draw_xy(amp, c. d)
+
+arrow=[]
+zero=[]
+x=0.05
+while x < 30:
+	if f(x) <= 1:
+		if f(x) >= -1:
+			arrow.append(x)
+			zero.append(0)
+	x += 0.05
+figure(figsize = (15,10))
+plot(0,0)
+plot(arrow, zero, "+")
+show()
